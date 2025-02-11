@@ -23,10 +23,11 @@ class QuizzPage extends StatefulWidget {
 }
 
 class _QuizzPageState extends State<QuizzPage> {
+  final random = Random();
+
   int currentIndexQuestion = 0;
   int score = 0;
   int wrongAnswers = 0;
-  final random = Random();
   int imageId = 0;
 
   late List<Question> questions = generateQuestionsByLevel(widget.level);
@@ -49,7 +50,7 @@ class _QuizzPageState extends State<QuizzPage> {
         context: context, 
         builder: (context) => AlertDialog(
           backgroundColor: Colors.green,
-          title: Text("GG"),
+          title: Text('GG bro'),
           content: Text(questions[currentIndexQuestion].explanation),
           actions: [
             ElevatedButton(
@@ -59,7 +60,7 @@ class _QuizzPageState extends State<QuizzPage> {
                   });
                   nextQuestion(currentIndexQuestion);
                 },
-                child: Text("Next")
+                child: Text('Next')
             )
           ]
         )
@@ -69,7 +70,7 @@ class _QuizzPageState extends State<QuizzPage> {
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: Colors.red,
-          title: Text("Noob."),
+          title: Text('Noob.'),
           content: Text(questions[currentIndexQuestion].explanation),
           actions: [
             ElevatedButton(
@@ -79,7 +80,7 @@ class _QuizzPageState extends State<QuizzPage> {
                 });
                 nextQuestion(currentIndexQuestion);
               },
-              child: Text("Next")
+              child: Text('Next')
             )
           ]
         )
@@ -114,6 +115,12 @@ class _QuizzPageState extends State<QuizzPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          LinearProgressIndicator(
+            value: (currentIndexQuestion + 1) / questions.length,
+            backgroundColor: Colors.grey[300],
+            color: Colors.purple,
+            minHeight: 10,
+          ),
           Image.network('https://picsum.photos/$imageId'),
           Padding(
             padding: EdgeInsets.all(16.0),

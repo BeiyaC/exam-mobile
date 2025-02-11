@@ -5,9 +5,9 @@ import 'package:exam_quizz/enums/level.dart';
 
 class HomePage extends StatelessWidget {
   final NavigationMethods router = NavigationMethods();
-  final int last_score;
+  final int lastScore;
 
-  HomePage({this.last_score=0});
+  HomePage({this.lastScore=0});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           title: Column(
             children: [
               Text('Quiz App'),
-              Text("Last score: $last_score")
+              Text('Last score: $lastScore')
             ],
           )
       ),
@@ -30,18 +30,21 @@ class HomePage extends StatelessWidget {
               },
               child: Text('Easy Quiz'),
             ),
+            Text('Connaissances générales simples et accessibles.'),
             ElevatedButton(
               onPressed: () {
                 router.navigateToPage(context, QuizzPage(router: router, level: Level.medium));
               },
               child: Text('Medium Quiz'),
             ),
+            Text('Des faits intéressants mais un peu plus complexes.'),
             ElevatedButton(
               onPressed: () {
                 router.navigateToPage(context, QuizzPage(router: router, level: Level.hard));
               },
               child: Text('Hard Quiz'),
             ),
+            Text('Des concepts scientifiques avancés et étonnants.')
           ],
         ),
       ),

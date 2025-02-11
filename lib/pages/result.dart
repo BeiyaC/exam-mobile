@@ -38,7 +38,7 @@ class ResultPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                router.navigateToPage(context, HomePage(last_score: score));
+                router.navigateToPage(context, HomePage(lastScore: score));
               },
               child: Text('Restart Quiz'),
             ),
